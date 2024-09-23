@@ -26,7 +26,7 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.green,
+          backgroundColor: Colors.green.withOpacity(0.3),
           title: Text('EOS ToDoList'),
           leading: Icon(Icons.check_box_outlined),
         ),
