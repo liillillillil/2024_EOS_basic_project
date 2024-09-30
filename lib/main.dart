@@ -12,8 +12,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'EOS ToDoList',
       theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurpleAccent),
-          useMaterial3: true),
+        useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
+        fontFamily: 'Pretendard', 
+      ),
       home: const MyHomePage(),
     );
   }
@@ -26,48 +28,58 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.green.withOpacity(0.3),
+          backgroundColor: Color(0xFFA4C639).withOpacity(0.1),
           title: Text('EOS ToDoList'),
-          leading: Icon(Icons.check_box_outlined),
+          leading: Image.asset('assets/images/eos_logo.png.png'),
         ),
-        body: Container(
-          height: 200,
-          color: Colors.lightGreen,
-          padding: EdgeInsets.all(25),
-          child: Row(
-            children: [
-              Container(
-                width: 150,
-                height: 150,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  border: Border.all(width: 10, color: Colors.grey)
-                ),
-                child: Icon(
-                  Icons.person,
-                  size: 100,
-                  color: Colors.grey,
-                ),
-              ),
-              SizedBox(
-                width: 10,
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
+        body: Column(
+          children: [
+            Container(
+              height: 200,
+              color: Colors.lightGreen.withOpacity(0.3),
+              padding: EdgeInsets.all(25),
+              child: Row(
                 children: [
-                  Text('EOS'),
-                  Text(
-                    '정재홍',
-                    style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                  Container(
+                      width: 140,
+                      height: 140,
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(90),
+                          border: Border.all(width: 10, color: Colors.grey)),
+                      child: Center(
+                          child: Image.asset('assets/images/eos_logo.png.png'),),
+                      ),
+                  SizedBox(
+                    width: 35,
                   ),
-                  Text('으악악'),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          '정재홍',
+                          style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(height: 15,
+                        ),
+                        Text('으악악'),
+                      ],
+                    ),
+                  )
                 ],
-              )
-            ],
-          ),
+              ),
+            ),
+            Container(
+              height: 500,
+              color: Color(0xFFA4C639).withOpacity(0.1),
+            )
+          ],
         )
-
     );
   }
 }
