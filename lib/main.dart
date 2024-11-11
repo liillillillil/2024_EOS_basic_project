@@ -6,20 +6,18 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'EOS ToDoList',
-      theme: ThemeData(
-        useMaterial3: true,
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
-        fontFamily: 'Pretendard',
-      ),
-      home: HomeScreen(),
+        title: 'eos todolist',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+          useMaterial3: true,
+          fontFamily: 'Prentendard',
+        ),
+        home: HomeScreen()
     );
   }
 }
-
-
