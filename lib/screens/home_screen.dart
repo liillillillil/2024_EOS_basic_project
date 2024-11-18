@@ -11,6 +11,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   List toDoLists = [];
+  final TextEditingController _textController = TextEditingController();
 
   @override
   void initState() {
@@ -18,6 +19,13 @@ class _HomeScreenState extends State<HomeScreen> {
     toDoLists.add("1111111");
     toDoLists.add("2222222");
     toDoLists.add("3333333");
+  }
+
+  @override
+  void dispose()
+  {
+    _textController.dispose();
+    super.dispose();
   }
 
   @override
@@ -128,11 +136,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     bottom: 30,
                     right: 40,
                     child: AddButton(
-                        onPressed: () {
-                          setState(() {
-                            toDoLists.add("+++++++");
-                          });
-                        }
+                        onPressed: _showAddToDoDialog
                     )
                 )
               ],
@@ -142,4 +146,42 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
+
+  void _showAddToDoDialog() {
+    showDialog(context: context, builder: (BuildContext context)
+    {
+      return AlertDialog(
+        title: Text("할 일 추가"),
+        content: TextField(
+          controller: _textController,
+          decoration: InputDecoration(
+            hintText: '할 일을 입력하세요',
+            border: UnderlineInputBorder(),
+            enabledBorder: UnderlineInputBorder(
+              borderSide: BorderSide(color: Colors.grey)
+            ),
+            focusedBorder: UnderlineInputBorder(
+              borderSide: BorderSide(color: Colors.black)
+            )
+          ),
+        ),
+        actions: [
+          TextButton(onPressed: () {
+            if (_textController.text.isNotEmpty) {
+              Navigator.of(context).pop();
+            }
+          }, child: Text('취소', style: TextStyle(color: Colors.black),)),
+          TextButton(onPressed: () {
+            if (_textController.text.isNotEmpty) {
+              setState(() {
+                toDoLists.add(_textController.text);
+                _textController.clear();
+              });
+              Navigator.of(context).pop();
+            }
+          }, child: Text('추가', style: TextStyle(color: Colors.black),))
+        ],
+      );
+    });}
+
 }
