@@ -59,7 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: Center(
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(80),
-                                child: Image.asset('assets/images/kijae.png', fit: BoxFit.cover,))
+                                child: Image.asset('assets/images/chat.jpeg', fit: BoxFit.cover,))
                         )
                     ),
                     SizedBox(
